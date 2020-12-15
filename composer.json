@@ -1,0 +1,20 @@
+{
+    "name": "saleebm/gfx-multiple-date-picker",
+    "type": "wordpress-plugin",
+    "authors": [
+        {
+            "name": "Mina Saleeb",
+            "email": "saleebmina@aol.com"
+        }
+    ],
+    "config": {
+        "optimize-autoloader": true
+    },
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "GFx\\MultiDateSelector\\": "includes/"
+        }
+    },
+    "minimum-stability": "dev"
+}
