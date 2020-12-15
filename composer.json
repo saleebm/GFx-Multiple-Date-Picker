@@ -1,5 +1,5 @@
 {
-    "name": "saleebm/gfx-multiple-date-picker",
+    "name": "saleebm/gf-multiple-date-picker",
     "type": "wordpress-plugin",
     "authors": [
         {
@@ -13,7 +13,7 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "GFx\\MultiDateSelector\\": "includes/"
+            "GF\\MultiDateSelector\\": "includes/"
         }
     },
     "minimum-stability": "dev"
