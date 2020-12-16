@@ -48,6 +48,8 @@ On initialization, creates a new role, `edit_gfx_calendar` to allow only adminis
 7. Use intermediary client state for selection of dates/choices of fields, thereby not bind UI to server state, less perceived loading.
     1. Put the loading indicator on a corner instead of as overlay.
     2. Debounce server updates, less bandwidth on user.
+8. More documentation and screenshots in readme.txt
+9. Deploy to WordPress Plugins
 
 ## Development
 

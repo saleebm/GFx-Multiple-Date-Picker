@@ -13,7 +13,6 @@ import Checkbox from '@material-ui/core/Checkbox'
 import { setFieldsSelectedAction } from '../../store/modules/calendar/action/calendar-actions'
 import { dateFields } from '../../utils/API'
 import { useClasses } from '../Settings'
-import { makeStyles } from '@material-ui/core/styles'
 
 const mapStateToProps = (state) => ({
   calendars: state.calendarReducer.calendars,
@@ -54,28 +53,27 @@ export const FieldsSelectedCheckbox = connect(
     >
       <Grid item xs={12}>
         <Typography variant={'h4'}>
-          Set fields to enable for context type, {registration}.
+          Set fields to enable for context: {registration}
         </Typography>
       </Grid>
       <Grid className={classes.checkboxGridItem} item xs={12}>
-        <FormControl component="fieldset" className={classes.formControl}>
+        <FormControl component={'fieldset'} className={classes.formControl}>
           <FormLabel
             className={classes.formLabelHeading}
             color={'primary'}
-            component="legend"
+            component={'legend'}
           >
             <Typography variant={'h5'} component={'span'}>
-              Assign date fields
+              Assign date fields to forms:
             </Typography>
           </FormLabel>
-          {dateFields &&
-            Array.isArray(dateFields) &&
+          {Array.isArray(dateFields) &&
             dateFields.map((formGroup) => (
               <FormGroup
                 className={classes.formDateFieldGroup}
                 key={formGroup.label}
               >
-                <FormLabel className={classes.formLabel} component="label">
+                <FormLabel className={classes.formLabel} component={'label'}>
                   {formGroup.label}
                 </FormLabel>
                 {!!formGroup.choices &&

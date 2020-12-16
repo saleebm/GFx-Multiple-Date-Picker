@@ -44,7 +44,7 @@ class GFMultiDateSelectorAddOn extends GFAddOn
         $this->_slug = $plugin->get_plugin_slug();
         $this->_version = $plugin->get_plugin_version();
         $this->init_roles();
-        $plugin_basename = plugin_basename(plugin_dir_path(realpath(__DIR__)) . $this->_slug . '.php');
+        $plugin_basename = plugin_basename(GFX_PLUGIN_PLUGIN_DIR . $this->_slug . '.php');
         // Add plugin action link point to settings page
         add_filter('plugin_action_links_' . $plugin_basename, array(
             $this,
@@ -60,7 +60,6 @@ class GFMultiDateSelectorAddOn extends GFAddOn
         }
     }
 
-
     /**
      * Add settings action link to the plugins page.
      *
@@ -74,7 +73,7 @@ class GFMultiDateSelectorAddOn extends GFAddOn
     {
         return array_merge(
             array(
-                'settings' => '<a title="Go to ' . $this->_title . ' settings" href="' . admin_url('options-general.php?page=' . $this->_slug) . '">' . __('Settings', $this->_slug) . '</a>',
+                'settings' => '<a title="Go to ' . $this->_title . ' settings" href="' . admin_url('admin.php?page=' . $this->_slug) . '">' . __('Settings', $this->_slug) . '</a>',
             ),
             $links
         );
@@ -104,7 +103,7 @@ class GFMultiDateSelectorAddOn extends GFAddOn
                         'admin_page' => array('plugin_page'),
                     )
                 ),
-                'in_footer' => true
+                'in_footer' => false
             ),
             array(
                 'handle' => $this->_slug . '-common-script',
@@ -189,7 +188,7 @@ class GFMultiDateSelectorAddOn extends GFAddOn
                 }
 
                 array_push($form_date_fields, array(
-                    'label' => esc_html__("{$form_name} ID #{$form_id}", 'gfx-multidateselector'),
+                    'label' => esc_html__("Form #{$form_id}: {$form_name}", 'gfx-multidateselector'),
                     'choices' => $choices
                 ));
             }

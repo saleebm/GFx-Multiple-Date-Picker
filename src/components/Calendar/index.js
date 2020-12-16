@@ -10,6 +10,7 @@ import debounce from 'lodash.debounce'
 import { setDatesSelected } from '../../store/modules/calendar/action/calendar-actions'
 
 import 'react-day-picker/lib/style.css'
+import { getCookie, setCookie } from '../../utils/cookies'
 
 const mapStateToProps = (state) => ({
   registrationState: state.calendarReducer.calendars,
@@ -35,8 +36,11 @@ export const Calendar = connect(
   mapStateToProps,
   mapDispatchToProps,
 )(function ({ registration, registrationState, dispatchDatesSelected }) {
-  const [sliderValue, setSliderValue] = useState(3)
-  const [calendarsToView, setCalendarsToView] = useState(3)
+  const CALS_TO_SHOW_COOKIE_NAME = 'cals-to-display'
+  const calsToShowOption = getCookie(CALS_TO_SHOW_COOKIE_NAME)
+  const calsToShowValue = !!calsToShowOption ? Number(calsToShowOption) : 3
+  const [sliderValue, setSliderValue] = useState(calsToShowValue)
+  const [calendarsToView, setCalendarsToView] = useState(calsToShowValue)
   const findIndex = registrationState.findIndex(
     (obj) => 'name' in obj && obj['name'] === registration,
   )
@@ -120,6 +124,7 @@ export const Calendar = connect(
 
   const onSliderInputChange = useCallback((evt, value) => {
     setSliderValue(value)
+    setCookie(CALS_TO_SHOW_COOKIE_NAME, value, 7)
   }, [])
 
   const onSliderCommmited = useCallback(
@@ -164,7 +169,7 @@ export const Calendar = connect(
             />
           ) : (
             <DayPicker
-              className="coptix-datepicker"
+              className={'coptix-datepicker'}
               selectedDays={[
                 ...(currentRegDates || []),
                 (day) => currentRegDates.includes(day.toISOString()),

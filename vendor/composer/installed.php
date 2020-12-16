@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '9a0a27b6164af73e8415d0ada0cba5dfc0b7a98b',
+    'reference' => 'f48a471c016b75e20c0936bea3e7cd5d2557ae28',
     'name' => 'saleebm/gf-multiple-date-picker',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '9a0a27b6164af73e8415d0ada0cba5dfc0b7a98b',
+      'reference' => 'f48a471c016b75e20c0936bea3e7cd5d2557ae28',
     ),
   ),
 );

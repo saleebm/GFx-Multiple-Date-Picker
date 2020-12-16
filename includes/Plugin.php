@@ -99,6 +99,7 @@ class Plugin
      */
     public static function deactivate()
     {
+        // optionally delete option on deactivation
         //delete_option( 'gfx_selected_dates' );
     }
 

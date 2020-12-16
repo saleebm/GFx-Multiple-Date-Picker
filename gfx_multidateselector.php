@@ -35,7 +35,7 @@ use GFx\MultiDateSelector\Endpoint\MultiDateSelectorRestController;
 use GFx\MultiDateSelector\GFAddonSettings\GFMultiDateSelectorAddOn;
 
 if (!defined('GFX_MULTIDATESELECTOR_VERSION')) {
-    define('GFX_MULTIDATESELECTOR_VERSION', '0.0.1');
+    define('GFX_MULTIDATESELECTOR_VERSION', '0.0.2');
 }
 
 if (!defined('GFX_PLUGIN_PLUGIN_DIR')) {
