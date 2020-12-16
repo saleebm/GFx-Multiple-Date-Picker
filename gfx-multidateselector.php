@@ -81,7 +81,6 @@ class GF_MultiDateSelector_AddOn_Bootstrap
      */
     public static function initGFAddon()
     {
-
         if (!method_exists('GFForms', 'include_addon_framework')) {
             return;
         }
