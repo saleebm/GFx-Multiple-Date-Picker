@@ -5,7 +5,7 @@
  * Plugin Name:       GFx Multiple Date Selector
  * Plugin URI:        https://saleeb.org
  * Description:       React gravity forms calendar management integration for admin to select dates to block from multiple forms at once, used in conjunction with Gravity Forms and Gravity Perks Limit Dates.
- * Version:           0.0.1
+ * Version:           0.0.2
  * Author:            Branch
  * Author URI:        https://saleeb.org
  * Text Domain:       gfx-multidateselector
