@@ -1,3 +1,4 @@
+/* line 1, src/components/LoadingDots/index.scss */
 .loading-dots-container {
   display: flex;
   flex-flow: column nowrap;
@@ -14,16 +15,15 @@
   min-height: fit-content;
   min-width: 100%;
 }
-
+/* line 16, src/components/LoadingDots/index.scss */
 #loading-dots-container {
   position: relative;
   display: block;
   width: 100px;
   height: 10px;
 }
-
 /* ooo, css circles*/
-
+/* line 24, src/components/LoadingDots/index.scss */
 .circle {
   display: inline-block;
   position: relative;
@@ -31,28 +31,26 @@
   -webkit-animation: dotloader 2.5s infinite;
   animation: dotloader 2.5s infinite;
 }
-
+/* line 35, src/components/LoadingDots/index.scss */
 .circle + .circle {
   margin-left: -25px;
   /* staggered effect cause by delay property */
   -webkit-animation: dotloader 2.5s 0.2s infinite;
   animation: dotloader 2.5s 0.2s infinite;
 }
-
+/* line 45, src/components/LoadingDots/index.scss */
 .circle + .circle + .circle {
   margin-left: -25px;
   -webkit-animation: dotloader 2.5s 0.4s infinite;
   animation: dotloader 2.5s 0.4s infinite;
 }
-
+/* line 54, src/components/LoadingDots/index.scss */
 .circle + .circle + .circle + .circle {
   margin-left: -25px;
   -webkit-animation: dotloader 2.5s 0.6s infinite;
   animation: dotloader 2.5s 0.6s infinite;
 }
-
 /* here be the animations matey! */
-
 @keyframes dotloader {
   0%,
   20% {
@@ -79,7 +77,6 @@
     background-color: rgba(0, 0, 0, 0);
   }
 }
-
 @-webkit-keyframes dotloader {
   0%,
   20% {
@@ -107,3 +104,5 @@
   }
 }
 
+
+/*# sourceMappingURL=admin.css.map*/

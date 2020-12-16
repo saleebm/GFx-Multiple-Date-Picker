@@ -12,7 +12,7 @@ GFForms::include_addon_framework();
 class GFMultiDateSelectorAddOn extends GFAddOn {
 
 	protected $_min_gravityforms_version = '1.9';
-	protected $_path = 'gfx-multiple-date-picker/includes/GravityFormsAddon/class-gfmultidateselectoraddon.php';
+    //	protected $_path = 'gfx-multiple-date-picker/includes/GravityFormsAddon/class-gfmultidateselectoraddon.php';
 	protected $_full_path = __FILE__;
 	protected $_title = 'GFx Multiple Date Selector';
 	protected $_short_title = 'Multiple Date Selector';

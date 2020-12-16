@@ -1,5 +1,4 @@
 import axios from 'axios'
-import https from 'https'
 
 const { gfx_multidateselector_runtime_script_strings } = window
 const {
@@ -18,5 +17,4 @@ export default axios.create({
     'Content-type': 'application/json',
     'X-WP-Nonce': api_nonce,
   },
-  httpsAgent: new https.Agent({ keepAlive: true }),
 })

@@ -131,7 +131,12 @@ export const Calendar = connect(
 
   return useMemo(
     () => (
-      <Grid container alignItems={'center'} justify={'center'}>
+      <Grid container alignItems={'center'} spacing={2} justify={'center'}>
+        <Grid item xs={12}>
+          <Typography variant={'h1'} gutterBottom>
+            Select Dates to Block
+          </Typography>
+        </Grid>
         <Grid
           item
           xs={12}
@@ -190,8 +195,8 @@ export const Calendar = connect(
             </Typography>
             <Slider
               value={sliderValue}
-              valueLabelDisplay="auto"
-              aria-labelledby="discrete-slider-restrict"
+              valueLabelDisplay={'auto'}
+              aria-labelledby={'discrete-slider-restrict'}
               max={12}
               min={1}
               step={1}

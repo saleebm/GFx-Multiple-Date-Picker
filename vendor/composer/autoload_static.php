@@ -9,12 +9,12 @@ class ComposerStaticInit35e41b96d6ef563845f13547d66bdf48
     public static $prefixLengthsPsr4 = array (
         'G' => 
         array (
-            'GF\\MultiDateSelector\\' => 21,
+            'GFx\\MultiDateSelector\\' => 22,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'GF\\MultiDateSelector\\' => 
+        'GFx\\MultiDateSelector\\' => 
         array (
             0 => __DIR__ . '/../..' . '/includes',
         ),
@@ -22,6 +22,10 @@ class ComposerStaticInit35e41b96d6ef563845f13547d66bdf48
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'GFx\\MultiDateSelector\\DateLimiter' => __DIR__ . '/../..' . '/includes/DateLimiter.php',
+        'GFx\\MultiDateSelector\\Endpoint\\MultiDateSelectorRestController' => __DIR__ . '/../..' . '/includes/Endpoint/MultiDateSelectorRestController.php',
+        'GFx\\MultiDateSelector\\GFAddOnSettings\\GFMultiDateSelectorAddOn' => __DIR__ . '/../..' . '/includes/GFAddOnSettings/GFMultiDateSelectorAddOn.php',
+        'GFx\\MultiDateSelector\\Plugin' => __DIR__ . '/../..' . '/includes/Plugin.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

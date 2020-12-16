@@ -11,11 +11,11 @@
 
 namespace GFx\MultiDateSelector\Endpoint;
 
-use GFx\MultiDateSelector\Plugin;
 use WP_Error;
 use WP_REST_Request;
 use WP_REST_Response;
 use WP_REST_Server;
+use GFx\MultiDateSelector\Plugin;
 
 /**
  * @subpackage REST_Controller

@@ -37,6 +37,9 @@ const mapDispatchToProps = (dispatch) =>
   )
 
 export const useClasses = makeStyles((theme) => ({
+  fieldsSelectedRoot: {
+    marginTop: theme.spacing(3),
+  },
   checkboxGridItem: {
     display: 'flex',
   },
@@ -172,11 +175,16 @@ export const Settings = connect(
           justify={'flex-start'}
         >
           <Grid item xs={12}>
+            <Typography variant={'h1'} gutterBottom>
+              Create new calendar context.
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
             <TextField
               size={'medium'}
               inputMode={'text'}
               type={'text'}
-              label={'Create new calendar context.'}
+              label={'Name for new calendar context:'}
               inputRef={registerCreateCalendar({
                 required: { value: true, message: 'Required' },
                 validate: {

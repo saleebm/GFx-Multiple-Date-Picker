@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'GF\\MultiDateSelector\\' => array($baseDir . '/includes'),
+    'GFx\\MultiDateSelector\\' => array($baseDir . '/includes'),
 );

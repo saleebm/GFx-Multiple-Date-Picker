@@ -24,8 +24,6 @@ module.exports = (env, argv) => {
       filename: '[name].js',
       path: resolve(__dirname, 'dist'),
       crossOriginLoading: 'use-credentials',
-      // TODO: remove this when upgrading to webpack 5
-      futureEmitAssets: true,
       // this defaults to 'window', but by setting it to 'this' then
       // module chunks which are built will work in web workers as well.
       globalObject: 'this',
@@ -39,9 +37,6 @@ module.exports = (env, argv) => {
       modules: ['src', 'node_modules'],
       extensions: ['*', '.js', '.jsx', '.css', '.scss'],
       alias: {
-        // Support React Native Web
-        // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-        'react-native': 'react-native-web',
         // Allows for better profiling with ReactDevTools
         ...(isProduction && {
           'react-dom$': 'react-dom/profiling',
@@ -49,20 +44,16 @@ module.exports = (env, argv) => {
         }),
       },
     },
-    node: {
-      module: 'empty',
-      dgram: 'empty',
-      dns: 'mock',
-      fs: 'empty',
-      http2: 'empty',
-      net: 'empty',
-      tls: 'empty',
-      child_process: 'empty',
-    },
     target: 'web',
     module: {
       strictExportPresence: true,
       rules: [
+        {
+          test: /\.m?js/,
+          resolve: {
+            fullySpecified: false,
+          },
+        },
         // Disable require.ensure as it's not a standard language feature.
         { parser: { requireEnsure: false } },
         {
@@ -77,9 +68,6 @@ module.exports = (env, argv) => {
           use: [
             {
               loader: MiniCssExtractPlugin.loader,
-              options: {
-                sourceMap: true,
-              },
             },
             {
               loader: 'css-loader',
@@ -91,7 +79,7 @@ module.exports = (env, argv) => {
             {
               loader: 'postcss-loader',
               options: {
-                sourceMap: 'inline',
+                sourceMap: true,
               },
             },
             {
@@ -135,50 +123,7 @@ module.exports = (env, argv) => {
     ],
     optimization: {
       minimize: isProduction,
-      minimizer: [
-        new TerserPlugin({
-          terserOptions: {
-            warnings: false,
-            parse: {
-              // We want terser to parse ecma 8 code. However, we don't want it
-              // to apply any minification steps that turns valid ecma 5 code
-              // into invalid ecma 5 code. This is why the 'compress' and 'output'
-              // sections only apply transformations that are ecma 5 safe
-              // https://github.com/facebook/create-react-app/pull/4234
-              ecma: 8,
-            },
-            compress: {
-              ecma: 5,
-              warnings: false,
-              // Disabled because of an issue with Uglify breaking seemingly valid code:
-              // https://github.com/facebook/create-react-app/issues/2376
-              // Pending further investigation:
-              // https://github.com/mishoo/UglifyJS2/issues/2011
-              comparisons: false,
-              // Disabled because of an issue with Terser breaking valid code:
-              // https://github.com/facebook/create-react-app/issues/5250
-              // Pending further investigation:
-              // https://github.com/terser-js/terser/issues/120
-              inline: 2,
-            },
-            mangle: {
-              safari10: true,
-            },
-            output: {
-              ecma: 5,
-              comments: false,
-              // Turned on because emoji and regex is not minified properly using default
-              // https://github.com/facebook/create-react-app/issues/2488
-              ascii_only: true,
-            },
-          },
-          parallel: true,
-          cache: true,
-          sourceMap: true,
-        }),
-      ],
-      sideEffects: true,
-      concatenateModules: false,
+      minimizer: [new TerserPlugin()],
       runtimeChunk: 'single',
       splitChunks: {
         chunks: 'all',

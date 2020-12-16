@@ -7,4 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'GFx\\MultiDateSelector\\DateLimiter' => $baseDir . '/includes/DateLimiter.php',
+    'GFx\\MultiDateSelector\\Endpoint\\MultiDateSelectorRestController' => $baseDir . '/includes/Endpoint/MultiDateSelectorRestController.php',
+    'GFx\\MultiDateSelector\\GFAddOnSettings\\GFMultiDateSelectorAddOn' => $baseDir . '/includes/GFAddOnSettings/GFMultiDateSelectorAddOn.php',
+    'GFx\\MultiDateSelector\\Plugin' => $baseDir . '/includes/Plugin.php',
 );

@@ -13,6 +13,7 @@ import Checkbox from '@material-ui/core/Checkbox'
 import { setFieldsSelectedAction } from '../../store/modules/calendar/action/calendar-actions'
 import { dateFields } from '../../utils/API'
 import { useClasses } from '../Settings'
+import { makeStyles } from '@material-ui/core/styles'
 
 const mapStateToProps = (state) => ({
   calendars: state.calendarReducer.calendars,
@@ -45,7 +46,12 @@ export const FieldsSelectedCheckbox = connect(
   }
 
   return (
-    <Grid container alignItems={'flex-start'} justify={'center'}>
+    <Grid
+      className={classes.fieldsSelectedRoot}
+      container
+      alignItems={'flex-start'}
+      justify={'center'}
+    >
       <Grid item xs={12}>
         <Typography variant={'h4'}>
           Set fields to enable for context type, {registration}.

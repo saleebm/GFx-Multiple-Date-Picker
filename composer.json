@@ -13,7 +13,7 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "GF\\MultiDateSelector\\": "includes/"
+            "GFx\\MultiDateSelector\\": "includes/"
         }
     },
     "minimum-stability": "dev"

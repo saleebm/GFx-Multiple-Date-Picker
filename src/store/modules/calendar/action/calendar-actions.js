@@ -69,10 +69,10 @@ export const updateFromServer = () => async (dispatch) => {
       console.log('creating calendars')
       // calendar on server not yet instantiated
       // will handle finish loading state
-      await dispatch({
+      dispatch({
         type: CalendarActionTypes.UPDATE_FROM_SERVER_FAILURE,
         payload: {
-          message: 'Please go to settings to initialize calendars',
+          message: 'Please go to the settings tab below to begin!',
         },
       })
     }
