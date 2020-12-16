@@ -63,7 +63,7 @@ export const useClasses = makeStyles((theme) => ({
     ...theme.typography.h5,
     fontVariant: 'small-caps',
     padding: '0.5rem',
-    flex: '1 1 auto',
+    flex: '0 1 auto',
   },
   formDateFieldGroup: {
     backgroundColor: theme.palette.background.paper,
@@ -223,7 +223,10 @@ export const Settings = connect(
                     className={classes.formDateFieldGroup}
                     key={formGroup.label}
                   >
-                    <FormLabel className={classes.formLabel} component="label">
+                    <FormLabel
+                      className={classes.formLabel}
+                      component={'label'}
+                    >
                       {formGroup.label}
                     </FormLabel>
                     {!!formGroup.choices &&
