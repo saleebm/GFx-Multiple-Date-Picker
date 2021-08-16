@@ -17,6 +17,16 @@ class GFMultiDateSelectorAddOn extends GFAddOn
     protected $_full_path = __FILE__;
     protected $_title = 'GFx Multiple Date Selector';
     protected $_short_title = 'Multiple Date Selector';
+    protected $_capabilities_settings_page = 'gravityforms_gfx';
+    protected $_capabilities_plugin_page = 'gravityforms_gfx';
+
+    protected $_capabilities_form_settings = 'gravityforms_gfx';
+
+    protected $_capabilities_uninstall = 'gravityforms_gfx';
+
+    protected $_capabilities_app_menu = 'gravityforms_gfx';
+    protected $_capabilities = array('gravityforms_gfx', 'gravityforms_gfx_uninstall');
+
 
     private static $_instance = null;
 
@@ -56,7 +66,8 @@ class GFMultiDateSelectorAddOn extends GFAddOn
     {
         $roles = array(get_role('administrator'));
         foreach ($roles as $role) {
-            $role->add_cap('edit_gfx_calendar');
+            $role->add_cap('gravityforms_gfx');
+            $role->add_cap('gravityforms_gfx_uninstall');
         }
     }
 
@@ -196,5 +207,4 @@ class GFMultiDateSelectorAddOn extends GFAddOn
 
         return $form_date_fields;
     }
-
 }
