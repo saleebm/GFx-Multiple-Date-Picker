@@ -191,6 +191,6 @@ class MultiDateSelectorRestController
      */
     public function gfx_permissions_check($request)
     {
-        return current_user_can('edit_gfx_calendar');
+        return current_user_can('gravityforms_gfx');
     }
 }

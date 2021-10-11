@@ -153,7 +153,7 @@ class GFMultiDateSelectorAddOn extends GFAddOn
         $styles = array(
             array(
                 'handle' => $this->_slug . '-common-style',
-                'src' => GFX_PLUGIN_PLUGIN_URL . '/dist/styles/common.css',
+                'src' => GFX_PLUGIN_PLUGIN_URL . '/dist/styles/admin.css',
                 'version' => $this->_version,
                 'enqueue' => array(
                     array('admin_page' => array('plugin_page'))
