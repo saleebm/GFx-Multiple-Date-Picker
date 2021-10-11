@@ -6,11 +6,15 @@ import Slider from '@material-ui/core/Slider'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import debounce from 'lodash.debounce'
-
-import { setDatesSelected } from '../../store/modules/calendar/action/calendar-actions'
+import { useHistory } from 'react-router'
+import {
+  setDatesSelected,
+  deleteContext,
+} from '../../store/modules/calendar/action/calendar-actions'
 
 import 'react-day-picker/lib/style.css'
 import { getCookie, setCookie } from '../../utils/cookies'
+import { Button } from '@material-ui/core'
 
 const mapStateToProps = (state) => ({
   registrationState: state.calendarReducer.calendars,
@@ -20,6 +24,7 @@ const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       dispatchDatesSelected: setDatesSelected,
+      deleteContext,
     },
     dispatch,
   )
@@ -35,7 +40,13 @@ const mapDispatchToProps = (dispatch) =>
 export const Calendar = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(function ({ registration, registrationState, dispatchDatesSelected }) {
+)(function ({
+  registration,
+  registrationState,
+  dispatchDatesSelected,
+  deleteContext,
+}) {
+  const history = useHistory()
   const CALS_TO_SHOW_COOKIE_NAME = 'cals-to-display'
   const calsToShowOption = getCookie(CALS_TO_SHOW_COOKIE_NAME)
   const calsToShowValue = !!calsToShowOption ? Number(calsToShowOption) : 3
@@ -134,6 +145,16 @@ export const Calendar = connect(
     [debouncedUpdateMonths],
   )
 
+  const handleDeleteContext = useCallback(() => {
+    const confirmed = window.confirm(
+      'Are you sure you want to clear all dates?',
+    )
+    if (confirmed) {
+      deleteContext(registration)
+      history.push('/')
+    }
+  }, [registration])
+
   return useMemo(
     () => (
       <Grid container alignItems={'center'} spacing={2} justify={'center'}>
@@ -182,7 +203,7 @@ export const Calendar = connect(
         <Grid
           style={{
             display: 'flex',
-            flexFlow: 'column wrap',
+            flexDirection: 'column',
             alignItems: 'flex-start',
             justifyContent: 'center',
             width: '100%',
@@ -209,6 +230,15 @@ export const Calendar = connect(
               onChangeCommitted={onSliderCommmited}
             />
           </div>
+          <div>
+            <Button
+              variant={'contained'}
+              color={'secondary'}
+              onClick={handleDeleteContext}
+            >
+              Delete Context
+            </Button>
+          </div>
         </Grid>
       </Grid>
     ),
@@ -221,6 +251,7 @@ export const Calendar = connect(
       onSliderCommmited,
       calendarsToView,
       sliderValue,
+      handleDeleteContext,
     ],
   )
 })

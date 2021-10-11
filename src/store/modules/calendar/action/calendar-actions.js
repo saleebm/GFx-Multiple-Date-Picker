@@ -1,15 +1,15 @@
 import { CalendarActionTypes, calendarStore } from '../reducer/calendar-store'
 import API from '../../../../utils/API'
 
-export const createCalTypeAction = (calName, fields = []) => async (
-  dispatch,
-) => {
-  dispatch({
-    type: CalendarActionTypes.CREATE_CAL_TYPE,
-    payload: { name: calName, fields },
-  })
-  await dispatch(updateServer())
-}
+export const createCalTypeAction =
+  (calName, fields = []) =>
+  async (dispatch) => {
+    dispatch({
+      type: CalendarActionTypes.CREATE_CAL_TYPE,
+      payload: { name: calName, fields },
+    })
+    await dispatch(updateServer())
+  }
 
 export const setDatesSelected = (name, datesSelected) => async (dispatch) => {
   dispatch({
@@ -22,15 +22,22 @@ export const setDatesSelected = (name, datesSelected) => async (dispatch) => {
   await dispatch(updateServer())
 }
 
-export const setFieldsSelectedAction = (name, fieldsSelected) => async (
-  dispatch,
-) => {
+export const setFieldsSelectedAction =
+  (name, fieldsSelected) => async (dispatch) => {
+    dispatch({
+      type: CalendarActionTypes.SET_FIELDS_SELECTED,
+      payload: {
+        name,
+        fieldsSelected,
+      },
+    })
+    await dispatch(updateServer())
+  }
+
+export const deleteContext = (context) => async (dispatch) => {
   dispatch({
-    type: CalendarActionTypes.SET_FIELDS_SELECTED,
-    payload: {
-      name,
-      fieldsSelected,
-    },
+    type: CalendarActionTypes.DELETE_CAL_TYPE,
+    payload: { contextName: context },
   })
   await dispatch(updateServer())
 }

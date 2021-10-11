@@ -3,6 +3,7 @@ import { produce } from 'immer'
 
 export const CalendarActionTypes = Object.freeze({
   CREATE_CAL_TYPE: 'CREATE_CAL_TYPE',
+  DELETE_CAL_TYPE: 'DELETE_CAL_TYPE',
   INITIALIZE_CALENDAR: 'INITIALIZE_CALENDAR',
   SET_DATES_SELECTED: 'SET_DATES_SELECTED',
   SET_FIELDS_SELECTED: 'SET_FIELDS_SELECTED',
@@ -76,22 +77,29 @@ export const CalendarReducer = (state = calendarStore, action) =>
           fields: action.payload.fields,
         })
         return draft
+      case CalendarActionTypes.DELETE_CAL_TYPE:
+        if (
+          draft.calendars.find((obj) => obj.name === action.payload.contextName)
+        ) {
+          draft.calendars = draft.calendars.filter(
+            (obj) => obj.name !== action.payload.contextName,
+          )
+        }
+        return draft
       case CalendarActionTypes.SET_DATES_SELECTED:
         const { name, datesSelected } = action.payload
         // action.payload.name: string; action.payload.datesSelected: Array<DatesSelected>
         if (draft.calendars.find((obj) => obj.name === name)) {
-          draft.calendars.find(
-            (obj) => obj.name === name,
-          ).datesSelected = datesSelected
+          draft.calendars.find((obj) => obj.name === name).datesSelected =
+            datesSelected
         }
         return draft
       case CalendarActionTypes.SET_FIELDS_SELECTED:
         const { name: calType, fieldsSelected } = action.payload
         // action.payload.name: string; action.payload.datesSelected: Array<DatesSelected>
         if (draft.calendars.find((obj) => obj.name === calType)) {
-          draft.calendars.find(
-            (obj) => obj.name === calType,
-          ).fields = fieldsSelected
+          draft.calendars.find((obj) => obj.name === calType).fields =
+            fieldsSelected
         }
         return draft
       default:
